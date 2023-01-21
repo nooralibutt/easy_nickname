@@ -1,7 +1,8 @@
 name: easy_nickname
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/nooralibutt/easy_nickname
+repository: https://github.com/nooralibutt/easy_nickname
 
 environment:
   sdk: '>=2.18.6 <3.0.0'

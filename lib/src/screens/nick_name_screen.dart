@@ -1,3 +1,4 @@
+import 'package:easy_nickname/src/screens/decorated_name_tab.dart';
 import 'package:flutter/material.dart';
 
 class NickNameScreen extends StatefulWidget {
@@ -11,8 +12,8 @@ class _NickNameScreenState extends State<NickNameScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 1,
-      length: 6,
+      initialIndex: 0,
+      length: 1,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Nick Name Generator'),
@@ -21,22 +22,12 @@ class _NickNameScreenState extends State<NickNameScreen> {
             isScrollable: true,
             tabs: <Widget>[
               Tab(text: "Decoration"),
-              Tab(text: "PubG"),
-              Tab(text: "Fortnite"),
-              Tab(text: "Fortnite"),
-              Tab(text: "Fortnite"),
-              Tab(text: "Fortnite"),
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: <Widget>[
-            Center(child: Text("It's cloudy here")),
-            Center(child: Text("It's cloudy here")),
-            Center(child: Text("It's cloudy here")),
-            Center(child: Text("It's cloudy here")),
-            Center(child: Text("It's cloudy here")),
-            Center(child: Text("It's cloudy here")),
+            DecoratedNameTab(),
           ],
         ),
       ),
