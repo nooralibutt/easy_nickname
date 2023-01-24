@@ -12,12 +12,23 @@ class NickNameScreen extends StatefulWidget {
 }
 
 class _NickNameScreenState extends State<NickNameScreen> {
+  int _getTabsLength(int? nameLength, bool showDefaultTabs) {
+    int length = 1;
+    if (nameLength != null) {
+      length += nameLength;
+    }
+    if (showDefaultTabs) {
+      length += NameCategory.defaultNames.length;
+    }
+    return length;
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = EasyNicknameController.of(context);
     return DefaultTabController(
       initialIndex: 0,
-      length: 10,
+      length: _getTabsLength(provider.names?.length, provider.showDefaultTabs),
       child: Scaffold(
         appBar: AppBar(
           title: Text(provider.title),
