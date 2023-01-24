@@ -36,22 +36,23 @@ class _DecoratedNameTabState extends State<DecoratedNameTab> {
           ),
           const SizedBox(height: 20),
           Expanded(
-              child: ListView.separated(
-            itemCount: fonts.length,
-            itemBuilder: (context, int index) {
-              final text = controller?.text.isNotEmpty ?? false
-                  ? controller!.text
-                  : "Preview";
-              return ListTile(
-                tileColor: Theme.of(context).dialogBackgroundColor,
-                title: Text(
-                  UnicodeFontConverter.encode(text, fonts[index]),
-                  textAlign: TextAlign.center,
-                ),
-              );
-            },
-            separatorBuilder: (__, _) => const SizedBox(height: 20),
-          ))
+            child: ListView.separated(
+              itemCount: fonts.length,
+              itemBuilder: (context, int index) {
+                final text = controller?.text.isNotEmpty ?? false
+                    ? controller!.text
+                    : "Preview";
+                return ListTile(
+                  tileColor: Theme.of(context).dialogBackgroundColor,
+                  title: Text(
+                    UnicodeFontConverter.encode(text, fonts[index]),
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              },
+              separatorBuilder: (__, _) => const SizedBox(height: 20),
+            ),
+          )
         ],
       ),
     );

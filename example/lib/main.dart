@@ -30,9 +30,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _incrementCounter() {
+  void _navigate() {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const NickNameScreen(), fullscreenDialog: true));
+        builder: (context) =>
+            const EasyNicknameApp(title: 'Nick Name Generator'),
+        fullscreenDialog: true));
   }
 
   @override
@@ -43,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: const Text('Some Text'),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _navigate,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
