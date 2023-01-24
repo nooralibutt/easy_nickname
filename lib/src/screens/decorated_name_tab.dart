@@ -1,4 +1,5 @@
 import 'package:easy_nickname/src/utils/unicode_font_converter.dart';
+import 'package:easy_nickname/src/widgets/font_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class DecoratedNameTab extends StatefulWidget {
@@ -42,13 +43,7 @@ class _DecoratedNameTabState extends State<DecoratedNameTab> {
                 final text = controller?.text.isNotEmpty ?? false
                     ? controller!.text
                     : "Preview";
-                return ListTile(
-                  tileColor: Theme.of(context).dialogBackgroundColor,
-                  title: Text(
-                    UnicodeFontConverter.encode(text, fonts[index]),
-                    textAlign: TextAlign.center,
-                  ),
-                );
+                return FontListTile(text: text, fonts: fonts[index]);
               },
               separatorBuilder: (__, _) => const SizedBox(height: 20),
             ),

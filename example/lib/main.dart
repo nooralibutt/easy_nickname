@@ -30,20 +30,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _navigate() {
-    Navigator.of(context).push(MaterialPageRoute(
+  String? selectedNameStyle;
+
+  void _navigate() async {
+    selectedNameStyle = await Navigator.of(context).push(MaterialPageRoute(
         builder: (context) =>
             const EasyNicknameApp(title: 'Nick Name Generator'),
         fullscreenDialog: true));
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      appBar: AppBar(title: Text(widget.title)),
+      body: Center(
+        child: Text(
+          selectedNameStyle ?? 'Some Text',
+          style: Theme.of(context).textTheme.headline4,
+        ),
       ),
-      body: const Text('Some Text'),
       floatingActionButton: FloatingActionButton(
         onPressed: _navigate,
         tooltip: 'Increment',
