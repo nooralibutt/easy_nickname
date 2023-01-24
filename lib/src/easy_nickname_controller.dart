@@ -1,4 +1,4 @@
-import 'package:easy_nickname/src/models/name_category.dart';
+import 'package:easy_nickname/src/models/category_tab.dart';
 import 'package:flutter/material.dart';
 
 class EasyNicknameController extends InheritedWidget {

@@ -1,6 +1,6 @@
 import 'package:easy_nickname/easy_nickname.dart';
 import 'package:easy_nickname/src/easy_nickname_controller.dart';
-import 'package:easy_nickname/src/models/name_category.dart';
+import 'package:easy_nickname/src/models/category_tab.dart';
 import 'package:easy_nickname/src/screens/nick_name_screen.dart';
 import 'package:flutter/material.dart';
 
