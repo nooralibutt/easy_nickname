@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 class EasyNicknameController extends InheritedWidget {
   final String title;
   final bool showDefaultTabs;
-  final List<NameCategory>? names;
+  final List<CategoryTab> names;
   const EasyNicknameController({
     super.key,
     required this.title,
     required this.showDefaultTabs,
-    this.names,
+    required this.names,
     required super.child,
   });
 

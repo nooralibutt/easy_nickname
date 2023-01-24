@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Nick Name Demo'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -32,14 +32,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String? selectedNameStyle;
 
-  void _navigate() async {
-    selectedNameStyle = await Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-            const EasyNicknameApp(title: 'Nick Name Generator'),
-        fullscreenDialog: true));
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _navigate,
+        onPressed: () async {
+          selectedNameStyle = await EasyNicknameApp.launchApp(context,
+              title: 'Nick Name Generator');
+          setState(() {});
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

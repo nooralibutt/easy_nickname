@@ -12,35 +12,32 @@ class NickNameScreen extends StatefulWidget {
 }
 
 class _NickNameScreenState extends State<NickNameScreen> {
-  int _getTabsLength(int? nameLength, bool showDefaultTabs) {
-    int length = 1;
-    if (nameLength != null) {
-      length += nameLength;
-    }
+  int _getTabsLength(int nameLength, bool showDefaultTabs) {
+    int length = 1 + nameLength;
     if (showDefaultTabs) {
-      length += NameCategory.defaultNames.length;
+      length += CategoryTab.defaultNames.length;
     }
     return length;
   }
 
   @override
   Widget build(BuildContext context) {
-    final provider = EasyNicknameController.of(context);
+    final controller = EasyNicknameController.of(context);
     return DefaultTabController(
       initialIndex: 0,
-      length: _getTabsLength(provider.names?.length, provider.showDefaultTabs),
+      length:
+          _getTabsLength(controller.names.length, controller.showDefaultTabs),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(provider.title),
+          title: Text(controller.title),
           centerTitle: true,
           bottom: TabBar(
             isScrollable: true,
             tabs: [
               const Tab(text: 'Decoration'),
-              if (provider.names != null)
-                ...provider.names!.map((e) => Tab(text: e.title)).toList(),
-              if (provider.showDefaultTabs)
-                ...NameCategory.defaultNames
+              ...controller.names.map((e) => Tab(text: e.title)).toList(),
+              if (controller.showDefaultTabs)
+                ...CategoryTab.defaultNames
                     .map((e) => Tab(text: e.title))
                     .toList(),
             ],
@@ -49,13 +46,12 @@ class _NickNameScreenState extends State<NickNameScreen> {
         body: TabBarView(
           children: [
             const DecoratedNameTab(),
-            if (provider.names != null)
-              ...provider.names!
-                  .map((e) => PreGeneratedNamesTab(names: e.names))
-                  .toList(),
-            if (provider.showDefaultTabs)
-              ...NameCategory.defaultNames
-                  .map((e) => PreGeneratedNamesTab(names: e.names))
+            ...controller.names
+                .map((e) => CategoryNamesTab(names: e.names))
+                .toList(),
+            if (controller.showDefaultTabs)
+              ...CategoryTab.defaultNames
+                  .map((e) => CategoryNamesTab(names: e.names))
                   .toList(),
           ],
         ),

@@ -1,19 +1,19 @@
-class NameCategory {
+class CategoryTab {
   final String title;
   final List<String> names;
 
-  NameCategory({required this.title, required this.names});
+  CategoryTab({required this.title, required this.names});
 
   static final defaultNames = [
-    NameCategory(title: 'Bad Ass Names', names: _badAssNames),
-    NameCategory(title: 'Girlz Names', names: _girlsName),
-    NameCategory(title: 'Boyz Names', names: _boysNames),
-    NameCategory(title: 'Legendary Names', names: _legendaryNames),
-    NameCategory(title: 'Popular Names', names: _popularNames),
-    NameCategory(title: 'Random Names', names: _randomNames),
-    NameCategory(title: 'Squad Names', names: _squadNames),
-    NameCategory(title: 'Rare Names', names: _rareNames),
-    NameCategory(title: 'Top Names', names: _topNames),
+    CategoryTab(title: 'Bad Ass Names', names: _badAssNames),
+    CategoryTab(title: 'Girlz Names', names: _girlsName),
+    CategoryTab(title: 'Boyz Names', names: _boysNames),
+    CategoryTab(title: 'Legendary Names', names: _legendaryNames),
+    CategoryTab(title: 'Popular Names', names: _popularNames),
+    CategoryTab(title: 'Random Names', names: _randomNames),
+    CategoryTab(title: 'Squad Names', names: _squadNames),
+    CategoryTab(title: 'Rare Names', names: _rareNames),
+    CategoryTab(title: 'Top Names', names: _topNames),
   ];
 
   static const _badAssNames = [

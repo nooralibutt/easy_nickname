@@ -4,9 +4,9 @@ import 'package:easy_nickname/src/utils/unicode_font_converter.dart';
 import 'package:easy_nickname/src/widgets/font_list_tile.dart';
 import 'package:flutter/material.dart';
 
-class PreGeneratedNamesTab extends StatelessWidget {
+class CategoryNamesTab extends StatelessWidget {
   final List<String> names;
-  const PreGeneratedNamesTab({Key? key, required this.names}) : super(key: key);
+  const CategoryNamesTab({Key? key, required this.names}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
