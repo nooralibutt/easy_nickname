@@ -15,10 +15,11 @@ class CategoryNamesTab extends StatelessWidget {
         itemCount: names.length,
         itemBuilder: (context, int index) {
           final textHashcode = names[index].hashCode;
-          final unicodeFont = UnicodeFontConverter.getFontStyle(textHashcode);
-          final symbol = StylishSymbol.randomSymbol(textHashcode);
-          return FontListTile(
-              text: names[index], font: unicodeFont, symbol: symbol);
+          final unicodeFont = UnicodeFontConverter.getFont(textHashcode);
+          final symbol = StylishSymbol.getSymbol(textHashcode);
+          final text =
+              UnicodeFontConverter.encode(names[index], unicodeFont, symbol);
+          return FontListTile(decoratedText: text);
         },
         separatorBuilder: (__, _) => const SizedBox(height: 20),
       ),

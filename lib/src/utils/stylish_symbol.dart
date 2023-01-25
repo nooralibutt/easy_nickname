@@ -1,7 +1,7 @@
 import "dart:math";
 
 class StylishSymbol {
-  static String randomSymbol(int hashcode) =>
+  static String getSymbol(int hashcode) =>
       symbols[Random(hashcode).nextInt(symbols.length)];
 
   static const symbols = [
