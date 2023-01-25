@@ -1,4 +1,4 @@
-import 'package:easy_nickname/src/utils/stylish_symbol.dart';
+import 'dart:math';
 
 enum UnicodeFont {
   one,
@@ -44,7 +44,8 @@ enum UnicodeFont {
 }
 
 class UnicodeFontConverter {
-  static String encode(final String text, final UnicodeFont font) {
+  static String encode(
+      final String text, final UnicodeFont font, final String randomSymbol) {
     final buffer = StringBuffer();
     final from = _fonts[UnicodeFont.normal]!;
     final to = _fonts[font]!;
@@ -60,6 +61,20 @@ class UnicodeFontConverter {
     final symbol = randomSymbol;
     return '$symbol ${buffer.toString()} $symbol';
   }
+
+  static UnicodeFont getFontStyle(int hashcode) {
+    final random = Random(hashcode);
+    return UnicodeFont.values[random.nextInt(UnicodeFont.values.length)];
+  }
+
+  // static String generateFontStyle(String text) {
+  //   final random = Random(textHashcode);
+  //   final randomUnicode =
+  //       UnicodeFont.values[random.nextInt(UnicodeFont.values.length)];
+  //   final randomSymbol =
+  //       StylishSymbol.symbols[random.nextInt(StylishSymbol.symbols.length)];
+  //   return UnicodeFontConverter.encode(text, randomUnicode, randomSymbol);
+  // }
 
   static const _fonts = <UnicodeFont, List<String>>{
     UnicodeFont.one: [

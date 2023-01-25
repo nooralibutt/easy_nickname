@@ -5,22 +5,22 @@ class FontListTile extends StatelessWidget {
   const FontListTile({
     Key? key,
     required this.text,
-    required this.fonts,
+    required this.font,
+    required this.symbol,
   }) : super(key: key);
 
   final String text;
-  final UnicodeFont fonts;
+  final UnicodeFont font;
+  final String symbol;
 
   @override
   Widget build(BuildContext context) {
+    final stylizedText = UnicodeFontConverter.encode(text, font, symbol);
+
     return ListTile(
-      onTap: () =>
-          Navigator.pop(context, UnicodeFontConverter.encode(text, fonts)),
+      onTap: () => Navigator.pop(context, stylizedText),
       tileColor: Theme.of(context).dialogBackgroundColor,
-      title: Text(
-        UnicodeFontConverter.encode(text, fonts),
-        textAlign: TextAlign.center,
-      ),
+      title: Text(stylizedText, textAlign: TextAlign.center),
     );
   }
 }
