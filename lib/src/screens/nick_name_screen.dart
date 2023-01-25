@@ -12,25 +12,16 @@ class _NickNameScreenState extends State<NickNameScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 0,
-      length: 1,
-      child: Scaffold(
+        initialIndex: 0,
+        length: 1,
+        child: Scaffold(
         appBar: AppBar(
-          title: const Text('Nick Name Generator'),
-          centerTitle: true,
-          bottom: const TabBar(
-            isScrollable: true,
-            tabs: <Widget>[
-              Tab(text: "Decoration"),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            DecoratedNameTab(),
-          ],
-        ),
-      ),
+        title: const Text('Nick Name Generator'),
+    centerTitle: true,
+    bottom: const TabBar(
+    isScrollable: true,
+    tabs: <Widget>[
+    Tab(text: "Decoration"),
+    ],
+    ),
     );
-  }
-}
