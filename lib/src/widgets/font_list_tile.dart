@@ -6,12 +6,12 @@ class FontListTile extends StatelessWidget {
     Key? key,
     required this.text,
     required this.font,
-    required this.symbol,
+    this.symbol,
   }) : super(key: key);
 
   final String text;
   final UnicodeFont font;
-  final String symbol;
+  final String? symbol;
 
   @override
   Widget build(BuildContext context) {

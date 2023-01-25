@@ -1,4 +1,3 @@
-import 'package:easy_nickname/src/utils/stylish_symbol.dart';
 import 'package:easy_nickname/src/utils/unicode_font_converter.dart';
 import 'package:easy_nickname/src/widgets/font_list_tile.dart';
 import 'package:flutter/material.dart';
@@ -45,12 +44,7 @@ class _DecoratedNameTabState extends State<DecoratedNameTab> {
                     ? controller!.text
                     : "Preview";
 
-                final textHashcode = text.hashCode;
-                final unicodeFont =
-                    UnicodeFontConverter.getFontStyle(textHashcode);
-                final symbol = StylishSymbol.randomSymbol(textHashcode);
-                return FontListTile(
-                    text: text, font: unicodeFont, symbol: symbol);
+                return FontListTile(text: text, font: fonts[index]);
               },
               separatorBuilder: (__, _) => const SizedBox(height: 20),
             ),
