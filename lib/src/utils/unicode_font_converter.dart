@@ -64,7 +64,7 @@ class UnicodeFontConverter {
 
   static UnicodeFont getFont(int hashcode) {
     final random = Random(hashcode);
-    final values = UnicodeFont.values;
+    const values = UnicodeFont.values;
     return values[random.nextInt(values.length)];
   }
 
