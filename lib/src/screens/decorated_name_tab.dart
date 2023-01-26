@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:easy_nickname/src/utils/stylish_symbol.dart';
 import 'package:easy_nickname/src/utils/unicode_font_converter.dart';
+import 'package:easy_nickname/src/widgets/font_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class DecoratedNameTab extends StatefulWidget {
@@ -36,22 +40,20 @@ class _DecoratedNameTabState extends State<DecoratedNameTab> {
           ),
           const SizedBox(height: 20),
           Expanded(
-              child: ListView.separated(
-            itemCount: fonts.length,
-            itemBuilder: (context, int index) {
-              final text = controller?.text.isNotEmpty ?? false
-                  ? controller!.text
-                  : "Preview";
-              return ListTile(
-                tileColor: Theme.of(context).dialogBackgroundColor,
-                title: Text(
-                  UnicodeFontConverter.encode(text, fonts[index]),
-                  textAlign: TextAlign.center,
-                ),
-              );
-            },
-            separatorBuilder: (__, _) => const SizedBox(height: 20),
-          ))
+            child: ListView.separated(
+              itemCount: fonts.length,
+              itemBuilder: (context, int index) {
+                String text = controller?.text.isNotEmpty ?? false
+                    ? controller!.text
+                    : "Preview";
+                final symbol = StylishSymbol
+                    .symbols[Random().nextInt(StylishSymbol.symbols.length)];
+                text = UnicodeFontConverter.encode(text, fonts[index], symbol);
+                return FontListTile(decoratedText: text);
+              },
+              separatorBuilder: (__, _) => const SizedBox(height: 20),
+            ),
+          )
         ],
       ),
     );
