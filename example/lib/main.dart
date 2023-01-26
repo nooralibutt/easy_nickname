@@ -39,11 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Text(
           selectedNameStyle ?? 'Some Text',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
+          /// Use this to launch nickname app
           selectedNameStyle = await EasyNicknameApp.launchApp(context,
               title: 'Nick Name Generator');
           setState(() {});

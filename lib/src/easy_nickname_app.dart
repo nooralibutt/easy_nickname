@@ -5,8 +5,13 @@ import 'package:easy_nickname/src/screens/nick_name_screen.dart';
 import 'package:flutter/material.dart';
 
 class EasyNicknameApp extends StatelessWidget {
+  /// this will be the title of the app
   final String title;
+
+  /// set this to true if you want to show [defaultNames]
   final bool showDefaultTabs;
+
+  /// you can add your own names that will be changed to nickname by this package
   final List<CategoryTab> names;
 
   const EasyNicknameApp({
@@ -28,13 +33,17 @@ class EasyNicknameApp extends StatelessWidget {
 
   static Future launchApp(
     BuildContext context, {
-    required String title,
-    bool showDefaultTabs = true,
-    List<CategoryTab> names = const [],
-  }) {
-    return Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => EasyNicknameApp(
-            title: title, showDefaultTabs: showDefaultTabs, names: names),
-        fullscreenDialog: true));
-  }
+    /// this will be the title of the app
+    required final String title,
+
+    /// set this to true if you want to show [defaultNames]
+    final bool showDefaultTabs = true,
+
+    /// you can add your own names that will be changed to nickname by this package
+    final List<CategoryTab> names = const [],
+  }) =>
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => EasyNicknameApp(
+              title: title, showDefaultTabs: showDefaultTabs, names: names),
+          fullscreenDialog: true));
 }
