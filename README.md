@@ -1,39 +1,33 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Easy Presentation
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+[![pub package](https://img.shields.io/pub/v/easy_nickname.svg?logo=dart&logoColor=00b9fc)](https://pub.dartlang.org/packages/easy_nickname)
+[![Last Commits](https://img.shields.io/github/last-commit/nooralibutt/easy_nickname?logo=git&logoColor=white)](https://github.com/nooralibutt/easy_nickname/commits/master)
+[![Pull Requests](https://img.shields.io/github/issues-pr/nooralibutt/easy_nickname?logo=github&logoColor=white)](https://github.com/nooralibutt/easy_nickname/pulls)
+[![Code size](https://img.shields.io/github/languages/code-size/nooralibutt/easy_nickname?logo=github&logoColor=white)](https://github.com/nooralibutt/easy_nickname)
+[![License](https://img.shields.io/github/license/nooralibutt/easy_nickname?logo=open-source-initiative&logoColor=green)](https://github.com/nooralibutt/easy_nickname/blob/master/LICENSE)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+**Show some 💙, 👍 the package & ⭐️ the repo to support the project**
 
 ## Features
+- Support for pre-defined nickname selection
+- Support to add your custom nicknames
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+![](https://github.com/nooralibutt/easy_nickname/blob/master/demo-gif.gif?raw=true)
+## How to use
+There are two ways to use Easy Presentation.
 
 ```dart
-const like = 'sample';
+EasyNicknameApp.launchApp(context, title: 'Nick Name Generator');
 ```
 
-## Additional information
+## Additional Info
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+See [Example](https://pub.dev/packages/easy_nickname/example) for better understanding.
+
+## Authors
+##### Noor Ali Butt
+[![GitHub Follow](https://img.shields.io/badge/Connect--blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/nooralibutt) [![LinkedIn Link](https://img.shields.io/badge/Connect--blue.svg?logo=linkedin&longCache=true&style=social&label=Connect
+)](https://www.linkedin.com/in/nooralibutt)
+##### Hanzla Waheed
+[![GitHub Follow](https://img.shields.io/badge/Connect--blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/mhanzla80) [![LinkedIn Link](https://img.shields.io/badge/Connect--blue.svg?logo=linkedin&longCache=true&style=social&label=Connect
+)](https://www.linkedin.com/in/mhanzla80)
