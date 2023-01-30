@@ -39,6 +39,12 @@ class _NickNameScreenState extends State<NickNameScreen>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    tabController?.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final controller = EasyNicknameController.of(context);
     return DefaultTabController(
