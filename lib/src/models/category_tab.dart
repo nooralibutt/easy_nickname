@@ -1,4 +1,4 @@
-enum EventAction { tabBarTap, tabChanged, selectionTap }
+enum EventAction { backPressed, tabBarTap, tabChanged, selectionTap }
 
 enum Placement { tabBarTop }
 

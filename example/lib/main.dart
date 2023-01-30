@@ -79,6 +79,10 @@ class _MyHomePageState extends State<MyHomePage> {
       if (kDebugMode) {
         print('TabBar Changed');
       }
+    } else if (event == EventAction.backPressed) {
+      if (kDebugMode) {
+        print('back Pressed');
+      }
     } else if (event == EventAction.tabChanged) {
       if (kDebugMode) {
         print('Tab Swiped');

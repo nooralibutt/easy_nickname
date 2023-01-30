@@ -47,6 +47,12 @@ class _NickNameScreenState extends State<NickNameScreen>
           _getTabsLength(controller.names.length, controller.showDefaultTabs),
       child: Scaffold(
         appBar: AppBar(
+          leading: CloseButton(
+            onPressed: () {
+              controller.onTapEvent?.call(context, EventAction.backPressed);
+              Navigator.pop(context);
+            },
+          ),
           title: Text(controller.title),
           centerTitle: true,
           bottom: TabBar(
