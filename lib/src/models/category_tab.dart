@@ -1,3 +1,7 @@
+enum EventAction { tabBarTap, tabChanged, selectionTap }
+
+enum Placement { tabBarTop }
+
 class CategoryTab {
   final String title;
   final List<String> names;

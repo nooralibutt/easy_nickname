@@ -9,11 +9,19 @@ class EasyNicknameApp extends StatelessWidget {
   final bool showDefaultTabs;
   final List<CategoryTab> names;
 
+  /// [onTapEvent] will be call on every event preformed by the user
+  final EventActionCallback? onTapEvent;
+
+  /// [placementBuilder] is used to build your custom widget at specific places
+  final PlacementBuilder? placementBuilder;
+
   const EasyNicknameApp({
     Key? key,
     required this.title,
     this.showDefaultTabs = true,
     this.names = const [],
+    this.onTapEvent,
+    this.placementBuilder,
   }) : super(key: key);
 
   @override
@@ -22,12 +30,15 @@ class EasyNicknameApp extends StatelessWidget {
       title: title,
       showDefaultTabs: showDefaultTabs,
       names: names,
+      onTapEvent: onTapEvent,
+      placementBuilder: placementBuilder,
       child: const NickNameScreen(),
     );
   }
 
   static Future launchApp(
     BuildContext context, {
+<<<<<<< Updated upstream
     required String title,
     bool showDefaultTabs = true,
     List<CategoryTab> names = const [],
@@ -37,4 +48,30 @@ class EasyNicknameApp extends StatelessWidget {
             title: title, showDefaultTabs: showDefaultTabs, names: names),
         fullscreenDialog: true));
   }
+=======
+    /// this will be the title of the app
+    required final String title,
+
+    /// set this to true if you want to show [defaultNames]
+    final bool showDefaultTabs = true,
+
+    /// you can add your own names that will be changed to nickname by this package
+    final List<CategoryTab> names = const [],
+
+    /// [onTapEvent] will be call on every event preformed by the user
+    final EventActionCallback? onTapEvent,
+
+    /// [placementBuilder] is used to build your custom widget at specific places
+    final PlacementBuilder? placementBuilder,
+  }) =>
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => EasyNicknameApp(
+                title: title,
+                showDefaultTabs: showDefaultTabs,
+                names: names,
+                onTapEvent: onTapEvent,
+                placementBuilder: placementBuilder,
+              ),
+          fullscreenDialog: true));
+>>>>>>> Stashed changes
 }
