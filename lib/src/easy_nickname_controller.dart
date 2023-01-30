@@ -5,11 +5,14 @@ typedef PlacementBuilder = Widget Function(BuildContext, Placement);
 typedef EventActionCallback = void Function(BuildContext, EventAction);
 
 class EasyNicknameController extends InheritedWidget {
+  /// this will be the title of the app
   final String title;
+
+  /// set this to true if you want to show [defaultNames]
   final bool showDefaultTabs;
+
+  /// you can add your own names that will be changed to nickname by this package
   final List<CategoryTab> names;
-<<<<<<< Updated upstream
-=======
 
   /// [onTapEvent] will be call on every event preformed by the user
   final EventActionCallback? onTapEvent;
@@ -17,7 +20,6 @@ class EasyNicknameController extends InheritedWidget {
   /// [placementBuilder] is used to build your custom widget at specific places
   final PlacementBuilder? placementBuilder;
 
->>>>>>> Stashed changes
   const EasyNicknameController({
     super.key,
     required this.title,
