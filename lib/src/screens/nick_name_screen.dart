@@ -48,24 +48,27 @@ class _NickNameScreenState extends State<NickNameScreen>
   @override
   Widget build(BuildContext context) {
     final controller = EasyNicknameController.of(context);
+    Widget? backButton;
+    if (Navigator.of(context).canPop()) {
+      backButton = CloseButton(
+        onPressed: () {
+          controller.onTapEvent?.call(context, EventAction.backPressed);
+          Navigator.pop(context);
+        },
+      );
+    }
+
     return DefaultTabController(
       initialIndex: 0,
       length:
           _getTabsLength(controller.names.length, controller.showDefaultTabs),
       child: Scaffold(
         appBar: AppBar(
-          leading: CloseButton(
-            onPressed: () {
-              controller.onTapEvent?.call(context, EventAction.backPressed);
-              Navigator.pop(context);
-            },
-          ),
+          leading: backButton,
           title: Text(controller.title),
           centerTitle: true,
           bottom: TabBar(
-            onTap: (index) {
-              controller.onTapEvent?.call(context, EventAction.tabBarTap);
-            },
+            controller: tabController,
             isScrollable: true,
             tabs: [
               const Tab(text: 'Decoration'),

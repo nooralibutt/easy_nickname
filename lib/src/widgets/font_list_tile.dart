@@ -1,6 +1,7 @@
 import 'package:easy_nickname/easy_nickname.dart';
 import 'package:easy_nickname/src/easy_nickname_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FontListTile extends StatelessWidget {
   const FontListTile({
@@ -12,12 +13,15 @@ class FontListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = EasyNicknameController.of(context);
+
     return ListTile(
       onTap: () {
-        EasyNicknameController.of(context)
-            .onTapEvent
-            ?.call(context, EventAction.selectionTap);
-        Navigator.pop(context, decoratedText);
+        controller.onTapEvent?.call(context, EventAction.selectionTap);
+        Clipboard.setData(ClipboardData(text: decoratedText));
+        controller.onCopy.call(decoratedText);
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Text has been copied!')));
       },
       tileColor: Theme.of(context).dialogBackgroundColor,
       title: Text(decoratedText, textAlign: TextAlign.center),

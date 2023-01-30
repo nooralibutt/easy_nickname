@@ -14,6 +14,9 @@ class EasyNicknameApp extends StatelessWidget {
   /// you can add your own names that will be changed to nickname by this package
   final List<CategoryTab> names;
 
+  /// you can copy nickname from [onCopy] and you can add your own implementation
+  final void Function(String) onCopy;
+
   /// [onTapEvent] will be call on every event preformed by the user
   final EventActionCallback? onTapEvent;
 
@@ -27,6 +30,7 @@ class EasyNicknameApp extends StatelessWidget {
     this.names = const [],
     this.onTapEvent,
     this.placementBuilder,
+    required this.onCopy,
   }) : super(key: key);
 
   @override
@@ -35,13 +39,14 @@ class EasyNicknameApp extends StatelessWidget {
       title: title,
       showDefaultTabs: showDefaultTabs,
       names: names,
+      onCopy: onCopy,
       onTapEvent: onTapEvent,
       placementBuilder: placementBuilder,
       child: const NickNameScreen(),
     );
   }
 
-  static Future launchApp(
+  static void launchApp(
     BuildContext context, {
     /// this will be the title of the app
     required final String title,
@@ -51,6 +56,9 @@ class EasyNicknameApp extends StatelessWidget {
 
     /// you can add your own names that will be changed to nickname by this package
     final List<CategoryTab> names = const [],
+
+    /// you can copy nickname from [onCopy] and you can add your own implementation
+    required final void Function(String) onCopy,
 
     /// [onTapEvent] will be call on every event preformed by the user
     final EventActionCallback? onTapEvent,
@@ -65,6 +73,7 @@ class EasyNicknameApp extends StatelessWidget {
                 names: names,
                 onTapEvent: onTapEvent,
                 placementBuilder: placementBuilder,
+                onCopy: onCopy,
               ),
           fullscreenDialog: true));
 }

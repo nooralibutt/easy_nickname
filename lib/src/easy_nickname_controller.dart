@@ -14,6 +14,9 @@ class EasyNicknameController extends InheritedWidget {
   /// you can add your own names that will be changed to nickname by this package
   final List<CategoryTab> names;
 
+  /// you can copy nickname from [onCopy] and you can add your own implementation
+  final void Function(String) onCopy;
+
   /// [onTapEvent] will be call on every event preformed by the user
   final EventActionCallback? onTapEvent;
 
@@ -27,6 +30,7 @@ class EasyNicknameController extends InheritedWidget {
     required this.names,
     this.onTapEvent,
     this.placementBuilder,
+    required this.onCopy,
     required super.child,
   });
 

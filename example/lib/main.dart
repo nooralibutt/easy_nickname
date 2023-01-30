@@ -36,20 +36,27 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Center(
-        child: Text(
-          selectedNameStyle ?? 'Some Text',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
+      /// Use [EasyNicknameApp] this to add nickname app to the widget tree
+      body: EasyNicknameApp(
+        title: 'Nick Name Generator',
+        onTapEvent: _handleEventActions,
+        placementBuilder: _addPlacements,
+        onCopy: (nickname) {
+          print(nickname);
+        },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
+        onPressed: () {
           /// Use this to launch nickname app
-          selectedNameStyle = await EasyNicknameApp.launchApp(context,
-              title: 'Nick Name Generator',
-              onTapEvent: _handleEventActions,
-              placementBuilder: _addPlacements);
+          EasyNicknameApp.launchApp(
+            context,
+            title: 'Nick Name Generator',
+            onTapEvent: _handleEventActions,
+            placementBuilder: _addPlacements,
+            onCopy: (nickname) {
+              print(nickname);
+            },
+          );
           setState(() {});
         },
         tooltip: 'Increment',
