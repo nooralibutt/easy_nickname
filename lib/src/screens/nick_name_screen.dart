@@ -42,6 +42,7 @@ class _NickNameScreenState extends State<NickNameScreen>
   void dispose() {
     super.dispose();
     tabController?.dispose();
+    tabController = null;
   }
 
   @override
