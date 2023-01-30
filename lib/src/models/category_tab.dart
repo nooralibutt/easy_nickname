@@ -3,11 +3,15 @@ enum EventAction { tabBarTap, tabChanged, selectionTap }
 enum Placement { tabBarTop }
 
 class CategoryTab {
+  ///  this will be the title of the tabBar
   final String title;
+
+  /// These are the list of names
   final List<String> names;
 
   CategoryTab({required this.title, required this.names});
 
+  ///  [defaultNames] are pre-defined names provided by this package
   static final defaultNames = [
     CategoryTab(title: 'Bad Ass Names', names: _badAssNames),
     CategoryTab(title: 'Girlz Names', names: _girlsName),
