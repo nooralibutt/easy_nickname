@@ -1,3 +1,5 @@
+import 'package:easy_nickname/easy_nickname.dart';
+import 'package:easy_nickname/src/easy_nickname_controller.dart';
 import 'package:flutter/material.dart';
 
 class FontListTile extends StatelessWidget {
@@ -11,7 +13,12 @@ class FontListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => Navigator.pop(context, decoratedText),
+      onTap: () {
+        EasyNicknameController.of(context)
+            .onTapEvent
+            ?.call(context, EventAction.selectionTap);
+        Navigator.pop(context, decoratedText);
+      },
       tileColor: Theme.of(context).dialogBackgroundColor,
       title: Text(decoratedText, textAlign: TextAlign.center),
     );

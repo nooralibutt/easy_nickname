@@ -1,3 +1,7 @@
+enum EventAction { backPressed, tabBarTap, tabChanged, selectionTap }
+
+enum Placement { tabBarTop }
+
 class CategoryTab {
   ///  this will be the title of the tabBar
   final String title;

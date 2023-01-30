@@ -1,4 +1,5 @@
 import 'package:easy_nickname/easy_nickname.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -46,12 +47,46 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () async {
           /// Use this to launch nickname app
           selectedNameStyle = await EasyNicknameApp.launchApp(context,
-              title: 'Nick Name Generator');
+              title: 'Nick Name Generator',
+              onTapEvent: _handleEventActions,
+              placementBuilder: _addPlacements);
           setState(() {});
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  /// you can add your own placement widget like this
+  Widget _addPlacements(BuildContext context, Placement placement) {
+    switch (placement) {
+      case Placement.tabBarTop:
+        return Container(
+            height: 50, width: double.infinity, color: Colors.orange);
+      default:
+        return const SizedBox();
+    }
+  }
+
+  /// You can handle every action performed by the user like this
+  void _handleEventActions(BuildContext context, EventAction event) {
+    if (event == EventAction.selectionTap) {
+      if (kDebugMode) {
+        print('selectionTap Pressed');
+      }
+    } else if (event == EventAction.tabBarTap) {
+      if (kDebugMode) {
+        print('TabBar Changed');
+      }
+    } else if (event == EventAction.backPressed) {
+      if (kDebugMode) {
+        print('back Pressed');
+      }
+    } else if (event == EventAction.tabChanged) {
+      if (kDebugMode) {
+        print('Tab Swiped');
+      }
+    }
   }
 }

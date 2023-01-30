@@ -1,6 +1,9 @@
 import 'package:easy_nickname/src/models/category_tab.dart';
 import 'package:flutter/material.dart';
 
+typedef PlacementBuilder = Widget Function(BuildContext, Placement);
+typedef EventActionCallback = void Function(BuildContext, EventAction);
+
 class EasyNicknameController extends InheritedWidget {
   /// this will be the title of the app
   final String title;
@@ -11,11 +14,19 @@ class EasyNicknameController extends InheritedWidget {
   /// you can add your own names that will be changed to nickname by this package
   final List<CategoryTab> names;
 
+  /// [onTapEvent] will be call on every event preformed by the user
+  final EventActionCallback? onTapEvent;
+
+  /// [placementBuilder] is used to build your custom widget at specific places
+  final PlacementBuilder? placementBuilder;
+
   const EasyNicknameController({
     super.key,
     required this.title,
     required this.showDefaultTabs,
     required this.names,
+    this.onTapEvent,
+    this.placementBuilder,
     required super.child,
   });
 
