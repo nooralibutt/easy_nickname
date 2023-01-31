@@ -23,6 +23,9 @@ class EasyNicknameController extends InheritedWidget {
   /// [placementBuilder] is used to build your custom widget at specific places
   final PlacementBuilder? placementBuilder;
 
+  /// you can customize nickname text style and and font size etc...
+  final TextStyle? nicknameTextStyle;
+
   const EasyNicknameController({
     super.key,
     required this.title,
@@ -30,6 +33,7 @@ class EasyNicknameController extends InheritedWidget {
     required this.names,
     this.onTapEvent,
     this.placementBuilder,
+    this.nicknameTextStyle,
     required this.onCopy,
     required super.child,
   });

@@ -24,7 +24,11 @@ class FontListTile extends StatelessWidget {
             const SnackBar(content: Text('Text has been copied!')));
       },
       tileColor: Theme.of(context).dialogBackgroundColor,
-      title: Text(decoratedText, textAlign: TextAlign.center),
+      title: Text(
+        decoratedText,
+        textAlign: TextAlign.center,
+        style: controller.nicknameTextStyle ?? const TextStyle(fontSize: 22),
+      ),
     );
   }
 }

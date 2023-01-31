@@ -23,6 +23,9 @@ class EasyNicknameApp extends StatelessWidget {
   /// [placementBuilder] is used to build your custom widget at specific places
   final PlacementBuilder? placementBuilder;
 
+  /// you can customize nickname text style and and font size etc...
+  final TextStyle? nicknameTextStyle;
+
   const EasyNicknameApp({
     Key? key,
     required this.title,
@@ -31,6 +34,7 @@ class EasyNicknameApp extends StatelessWidget {
     this.onTapEvent,
     this.placementBuilder,
     required this.onCopy,
+    this.nicknameTextStyle,
   }) : super(key: key);
 
   @override
