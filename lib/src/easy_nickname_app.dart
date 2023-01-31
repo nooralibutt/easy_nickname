@@ -15,7 +15,7 @@ class EasyNicknameApp extends StatelessWidget {
   final List<CategoryTab> names;
 
   /// you can copy nickname from [onCopy] and you can add your own implementation
-  final void Function(String) onCopy;
+  final ValueChanged<String>? onCopy;
 
   /// [onTapEvent] will be call on every event preformed by the user
   final EventActionCallback? onTapEvent;
@@ -33,7 +33,7 @@ class EasyNicknameApp extends StatelessWidget {
     this.names = const [],
     this.onTapEvent,
     this.placementBuilder,
-    required this.onCopy,
+    this.onCopy,
     this.nicknameTextStyle,
   }) : super(key: key);
 
@@ -52,7 +52,7 @@ class EasyNicknameApp extends StatelessWidget {
     );
   }
 
-  static void launchApp(
+  static Future launchApp(
     BuildContext context, {
     /// this will be the title of the app
     required final String title,
@@ -64,7 +64,7 @@ class EasyNicknameApp extends StatelessWidget {
     final List<CategoryTab> names = const [],
 
     /// you can copy nickname from [onCopy] and you can add your own implementation
-    required final void Function(String) onCopy,
+    final ValueChanged<String>? onCopy,
 
     /// [onTapEvent] will be call on every event preformed by the user
     final EventActionCallback? onTapEvent,

@@ -41,9 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: 'Nick Name Generator',
         onTapEvent: _handleEventActions,
         placementBuilder: _addPlacements,
-        onCopy: (nickname) {
-          logPrint(nickname);
-        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

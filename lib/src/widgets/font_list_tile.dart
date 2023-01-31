@@ -18,16 +18,20 @@ class FontListTile extends StatelessWidget {
     return ListTile(
       onTap: () {
         controller.onTapEvent?.call(context, NicknameEventAction.selectionTap);
-        Clipboard.setData(ClipboardData(text: decoratedText));
-        controller.onCopy.call(decoratedText);
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Text has been copied!')));
+        if (controller.onCopy == null) {
+          Clipboard.setData(ClipboardData(text: decoratedText));
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Nickname has been copied!')));
+        } else {
+          controller.onCopy?.call(decoratedText);
+        }
       },
       tileColor: Theme.of(context).dialogBackgroundColor,
       title: Text(
         decoratedText,
         textAlign: TextAlign.center,
-        style: controller.nicknameTextStyle ?? const TextStyle(fontSize: 22),
+        style: controller.nicknameTextStyle ??
+            Theme.of(context).textTheme.titleLarge,
       ),
     );
   }
