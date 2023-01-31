@@ -36,21 +36,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Center(
-        child: Text(
-          selectedNameStyle ?? 'Some Text',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
+      /// Use [EasyNicknameApp] this to add nickname app to the widget tree
+      body: EasyNicknameApp(
+        title: 'Nick Name Generator',
+        onTapEvent: _handleEventActions,
+        placementBuilder: _addPlacements,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
+        onPressed: () {
           /// Use this to launch nickname app
-          selectedNameStyle = await EasyNicknameApp.launchApp(context,
-              title: 'Nick Name Generator',
-              onTapEvent: _handleEventActions,
-              placementBuilder: _addPlacements);
-          setState(() {});
+          EasyNicknameApp.launchApp(
+            context,
+            title: 'Nick Name Generator',
+            onTapEvent: _handleEventActions,
+            placementBuilder: _addPlacements,
+            onCopy: (nickname) {
+              print(nickname);
+              Navigator.pop(context);
+            },
+          );
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
@@ -59,9 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   /// you can add your own placement widget like this
-  Widget _addPlacements(BuildContext context, Placement placement) {
+  Widget _addPlacements(BuildContext context, NicknamePlacement placement) {
     switch (placement) {
-      case Placement.tabBarTop:
+      case NicknamePlacement.tabBarTop:
         return Container(
             height: 50, width: double.infinity, color: Colors.orange);
       default:
@@ -70,23 +74,19 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   /// You can handle every action performed by the user like this
-  void _handleEventActions(BuildContext context, EventAction event) {
-    if (event == EventAction.selectionTap) {
-      if (kDebugMode) {
-        print('selectionTap Pressed');
-      }
-    } else if (event == EventAction.tabBarTap) {
-      if (kDebugMode) {
-        print('TabBar Changed');
-      }
-    } else if (event == EventAction.backPressed) {
-      if (kDebugMode) {
-        print('back Pressed');
-      }
-    } else if (event == EventAction.tabChanged) {
-      if (kDebugMode) {
-        print('Tab Swiped');
-      }
+  void _handleEventActions(BuildContext context, NicknameEventAction event) {
+    if (event == NicknameEventAction.selectionTap) {
+      logPrint(NicknameEventAction.selectionTap.name);
+    } else if (event == NicknameEventAction.backPressed) {
+      logPrint(NicknameEventAction.backPressed.name);
+    } else if (event == NicknameEventAction.tabChanged) {
+      logPrint(NicknameEventAction.tabChanged.name);
+    }
+  }
+
+  void logPrint(String str) {
+    if (kDebugMode) {
+      print(str);
     }
   }
 }
