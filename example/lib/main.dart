@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onTapEvent: _handleEventActions,
         placementBuilder: _addPlacements,
         onCopy: (nickname) {
-          print(nickname);
+          logPrint(nickname);
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -58,7 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.pop(context);
             },
           );
-          setState(() {});
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
@@ -80,17 +79,17 @@ class _MyHomePageState extends State<MyHomePage> {
   /// You can handle every action performed by the user like this
   void _handleEventActions(BuildContext context, NicknameEventAction event) {
     if (event == NicknameEventAction.selectionTap) {
-      if (kDebugMode) {
-        print('selectionTap Pressed');
-      }
+      logPrint(NicknameEventAction.selectionTap.name);
     } else if (event == NicknameEventAction.backPressed) {
-      if (kDebugMode) {
-        print('back Pressed');
-      }
+      logPrint(NicknameEventAction.backPressed.name);
     } else if (event == NicknameEventAction.tabChanged) {
-      if (kDebugMode) {
-        print('Tab Swiped');
-      }
+      logPrint(NicknameEventAction.tabChanged.name);
+    }
+  }
+
+  void logPrint(String str) {
+    if (kDebugMode) {
+      print(str);
     }
   }
 }
