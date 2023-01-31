@@ -17,7 +17,7 @@ class FontListTile extends StatelessWidget {
 
     return ListTile(
       onTap: () {
-        controller.onTapEvent?.call(context, EventAction.selectionTap);
+        controller.onTapEvent?.call(context, NicknameEventAction.selectionTap);
         Clipboard.setData(ClipboardData(text: decoratedText));
         controller.onCopy.call(decoratedText);
         ScaffoldMessenger.of(context).showSnackBar(

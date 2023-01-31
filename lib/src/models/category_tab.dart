@@ -1,6 +1,6 @@
-enum EventAction { backPressed, tabBarTap, tabChanged, selectionTap }
+enum NicknameEventAction { backPressed, tabChanged, selectionTap }
 
-enum Placement { tabBarTop }
+enum NicknamePlacement { tabBarTop }
 
 class CategoryTab {
   ///  this will be the title of the tabBar

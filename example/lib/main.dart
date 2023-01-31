@@ -55,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
             placementBuilder: _addPlacements,
             onCopy: (nickname) {
               print(nickname);
+              Navigator.pop(context);
             },
           );
           setState(() {});
@@ -66,9 +67,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   /// you can add your own placement widget like this
-  Widget _addPlacements(BuildContext context, Placement placement) {
+  Widget _addPlacements(BuildContext context, NicknamePlacement placement) {
     switch (placement) {
-      case Placement.tabBarTop:
+      case NicknamePlacement.tabBarTop:
         return Container(
             height: 50, width: double.infinity, color: Colors.orange);
       default:
@@ -77,20 +78,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   /// You can handle every action performed by the user like this
-  void _handleEventActions(BuildContext context, EventAction event) {
-    if (event == EventAction.selectionTap) {
+  void _handleEventActions(BuildContext context, NicknameEventAction event) {
+    if (event == NicknameEventAction.selectionTap) {
       if (kDebugMode) {
         print('selectionTap Pressed');
       }
-    } else if (event == EventAction.tabBarTap) {
-      if (kDebugMode) {
-        print('TabBar Changed');
-      }
-    } else if (event == EventAction.backPressed) {
+    } else if (event == NicknameEventAction.backPressed) {
       if (kDebugMode) {
         print('back Pressed');
       }
-    } else if (event == EventAction.tabChanged) {
+    } else if (event == NicknameEventAction.tabChanged) {
       if (kDebugMode) {
         print('Tab Swiped');
       }

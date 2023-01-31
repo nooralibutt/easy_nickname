@@ -5,7 +5,8 @@ import 'package:easy_nickname/src/screens/decorated_name_tab.dart';
 import 'package:flutter/material.dart';
 
 class NickNameScreen extends StatefulWidget {
-  const NickNameScreen({Key? key}) : super(key: key);
+  final EasyNicknameController controller;
+  const NickNameScreen(this.controller, {Key? key}) : super(key: key);
 
   @override
   State<NickNameScreen> createState() => _NickNameScreenState();
@@ -24,18 +25,23 @@ class _NickNameScreenState extends State<NickNameScreen>
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
 
-    final controller = EasyNicknameController.of(context);
+    final controller = widget.controller;
 
     tabController = TabController(
         length:
             _getTabsLength(controller.names.length, controller.showDefaultTabs),
         vsync: this);
 
-    tabController!.addListener(
-        () => controller.onTapEvent?.call(context, EventAction.tabChanged));
+    if (controller.onTapEvent != null) {
+      tabController?.addListener(() {
+        if (tabController?.indexIsChanging == false) {
+          controller.onTapEvent?.call(context, NicknameEventAction.tabChanged);
+        }
+      });
+    }
   }
 
   @override
@@ -52,55 +58,52 @@ class _NickNameScreenState extends State<NickNameScreen>
     if (Navigator.of(context).canPop()) {
       backButton = CloseButton(
         onPressed: () {
-          controller.onTapEvent?.call(context, EventAction.backPressed);
+          controller.onTapEvent?.call(context, NicknameEventAction.backPressed);
           Navigator.pop(context);
         },
       );
     }
 
-    return DefaultTabController(
-      initialIndex: 0,
-      length:
-          _getTabsLength(controller.names.length, controller.showDefaultTabs),
-      child: Scaffold(
-        appBar: AppBar(
-          leading: backButton,
-          title: Text(controller.title),
-          centerTitle: true,
-          bottom: TabBar(
-            controller: tabController,
-            isScrollable: true,
-            tabs: [
-              const Tab(text: 'Decoration'),
-              ...controller.names.map((e) => Tab(text: e.title)).toList(),
-              if (controller.showDefaultTabs)
-                ...CategoryTab.defaultNames
-                    .map((e) => Tab(text: e.title))
-                    .toList(),
-            ],
-          ),
-        ),
-        body: Column(
-          children: [
-            if (controller.placementBuilder != null)
-              controller.placementBuilder!.call(context, Placement.tabBarTop),
-            Expanded(
-              child: TabBarView(
-                controller: tabController,
-                children: [
-                  const DecoratedNameTab(),
-                  ...controller.names
-                      .map((e) => CategoryNamesTab(names: e.names))
-                      .toList(),
-                  if (controller.showDefaultTabs)
-                    ...CategoryTab.defaultNames
-                        .map((e) => CategoryNamesTab(names: e.names))
-                        .toList(),
-                ],
-              ),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: backButton,
+        title: Text(controller.title),
+        centerTitle: true,
+        bottom: TabBar(
+          controller: tabController,
+          isScrollable: true,
+          enableFeedback: true,
+          tabs: [
+            const Tab(text: 'Decoration'),
+            ...controller.names.map((e) => Tab(text: e.title)).toList(),
+            if (controller.showDefaultTabs)
+              ...CategoryTab.defaultNames
+                  .map((e) => Tab(text: e.title))
+                  .toList(),
           ],
         ),
+      ),
+      body: Column(
+        children: [
+          if (controller.placementBuilder != null)
+            controller.placementBuilder!
+                .call(context, NicknamePlacement.tabBarTop),
+          Expanded(
+            child: TabBarView(
+              controller: tabController,
+              children: [
+                const DecoratedNameTab(),
+                ...controller.names
+                    .map((e) => CategoryNamesTab(names: e.names))
+                    .toList(),
+                if (controller.showDefaultTabs)
+                  ...CategoryTab.defaultNames
+                      .map((e) => CategoryNamesTab(names: e.names))
+                      .toList(),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

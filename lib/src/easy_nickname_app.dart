@@ -42,7 +42,9 @@ class EasyNicknameApp extends StatelessWidget {
       onCopy: onCopy,
       onTapEvent: onTapEvent,
       placementBuilder: placementBuilder,
-      child: const NickNameScreen(),
+      child: Builder(
+          builder: (context) =>
+              NickNameScreen(EasyNicknameController.of(context))),
     );
   }
 

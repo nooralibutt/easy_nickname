@@ -1,8 +1,8 @@
 import 'package:easy_nickname/src/models/category_tab.dart';
 import 'package:flutter/material.dart';
 
-typedef PlacementBuilder = Widget Function(BuildContext, Placement);
-typedef EventActionCallback = void Function(BuildContext, EventAction);
+typedef PlacementBuilder = Widget Function(BuildContext, NicknamePlacement);
+typedef EventActionCallback = void Function(BuildContext, NicknameEventAction);
 
 class EasyNicknameController extends InheritedWidget {
   /// this will be the title of the app
